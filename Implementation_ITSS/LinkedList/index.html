@@ -1,0 +1,49 @@
+<body>
+    <script>
+        const Node = function(data = {}) {
+            this.data = data
+            this.next = null
+        }
+        const LinkedList = function() {
+            this.head = null
+        }
+
+        LinkedList.prototype.print = function() {
+            let current = this.head
+            while (current != null) {
+                console.log(current)
+                current = current.next
+            }
+        }
+
+        LinkedList.prototype.addHead = function(node) {
+                node.next = this.head
+                this.head = node
+        }
+
+        LinkedList.prototype.removeHead = function() {
+            if (this.head != null) {
+                this.head = this.head.next
+            }
+        }
+
+        LinkedList.prototype.search = function(data) {
+            let node = this.head
+            while (node != null) {
+                if (node.data == data) {
+                    console.log("Found " + node.data)
+                }
+                node = node.next
+            }
+        }
+
+        let list = new LinkedList
+        list.print()
+        list.addHead(new Node("A"))
+        list.addHead(new Node("B"))
+        list.addHead(new Node("C"))
+        //list.removeHead()
+        list.search("A")
+        list.print()
+    </script>
+</body>

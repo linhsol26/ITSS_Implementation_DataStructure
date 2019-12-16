@@ -1,0 +1,28 @@
+<body>
+    <script>
+        function isArmstrong(i) {
+            let sum = 0;
+            let temp = i;
+            while (temp != 0) {
+                let num = temp % 10;
+                sum += num * num * num;
+                temp = parseInt(temp / 10);
+            } 
+            if (sum == i) {
+                return true;
+            }
+            return false;
+        }
+
+        let res = "";
+        let i = 1;
+        while (i < 999) {
+            let kq = isArmstrong(i);
+            if (kq == true) {
+                res += i + " ";
+            }
+            i++;
+        }
+        console.log(res);
+    </script>
+</body>
