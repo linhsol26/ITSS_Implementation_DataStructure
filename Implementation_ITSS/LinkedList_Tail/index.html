@@ -9,9 +9,89 @@
             this.tail = null
         }
 
-        LinkedList.prototype.addHead = function() {
-            
+        LinkedList.prototype.print = function() {
+            let current = this.head
+            while (current != null) {
+                console.log(current)
+                current = current.next
+            }
         }
 
+        LinkedList.prototype.addHead = function(node) {
+            if (this.head == null) {
+                this.head = node
+                this.tail = node
+            }
+            else {
+                let tail = node
+                node.next = this.head
+                this.head = node
+                while (tail.next != null) {
+                    tail = tail.next
+                }
+            }        
+        }
+
+        LinkedList.prototype.addTail = function(node) {
+            let tail = this.head
+            while (tail.next != null) {
+                tail = tail.next
+            }
+            tail.next = node
+            this.tail = node
+        }
+
+        LinkedList.prototype.deleteHead = function() {
+            if (this.head != null) {
+                this.head = this.head.next
+            }
+        }
+
+        LinkedList.prototype.deleteTail = function() {
+            if (this.head.next == null) {
+                this.head = null
+            }
+            let pre = this.head
+            let tail = this.head.next
+
+            while (tail.next != null) {
+                pre = tail
+                tail = tail.next
+            }
+            pre.next = null
+            this.tail = pre
+        }
+
+        LinkedList.prototype.deleteData = function(data) {
+            if (this.head.data == data) {
+                this.head = this.head.next
+            }
+            else {
+                let pre = this.head
+                let current = this.head
+
+                while (current != null) {
+                    if (current.data == data) {
+                        pre.next = current.next
+                        current = current.next
+                        break;
+                    }
+                    else {
+                        pre = current
+                        current = current.next
+                    }
+                }
+            }
+        }
+        let list = new LinkedList
+        list.addHead(new Node("A"))
+        list.addHead(new Node("B"))
+        list.addHead(new Node("C"))
+        list.addTail(new Node("D"))
+        //list.deleteTail()
+        //list.deleteHead()
+        //list.deleteData("B")
+        list.print()
+        console.log(list)
     </script>
 </body>
