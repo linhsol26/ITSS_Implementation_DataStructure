@@ -2,8 +2,8 @@
     <script>
         const Node = function(data = {}) {
             this.data = data
-            this.next = next
-            this.pre = pre
+            this.next = null
+            this.pre = null
         }
 
         const LinkedList = function() {
@@ -35,10 +35,21 @@
             }
         }
 
-        let list = LinkedList
+        LinkedList.prototype.addTail = function(node) {
+            let tail = this.head
+            while (tail.next != null) {
+                tail = tail.next
+            }
+            tail.next = node
+            node.pre = tail
+            this.tail = node
+        }
+
+        let list = new LinkedList
         list.addHead(new Node("A"))
         list.addHead(new Node("B"))
         list.addHead(new Node("C"))
+        list.addTail(new Node("D"))
         list.print()
         console.log(list)
 
