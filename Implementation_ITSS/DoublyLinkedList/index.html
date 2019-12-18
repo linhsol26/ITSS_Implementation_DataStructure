@@ -45,11 +45,17 @@
             this.tail = node
         }
 
+        LinkedList.prototype.deleteHead = function() {
+            this.head = this.head.next
+            this.head.pre = null
+        }
+
         let list = new LinkedList
         list.addHead(new Node("A"))
         list.addHead(new Node("B"))
         list.addHead(new Node("C"))
         list.addTail(new Node("D"))
+        list.deleteHead()
         list.print()
         console.log(list)
 
