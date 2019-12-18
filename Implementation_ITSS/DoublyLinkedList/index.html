@@ -7,8 +7,25 @@
         }
 
         const LinkedList = function() {
-            this.head = head
-            this.tail = tail
+            this.head = null
+            this.tail = null
         }
+
+        LinkedList.prototype.addHead = function(node) {
+            if (this.head == null) {
+                this.head = node
+                this.tail = node
+            }
+            else {
+                node.next = this.head
+                this.head.pre = node
+                this.head = node
+                let tail = this.head
+                while (tail.next != null) {
+                    tail = tail.next
+                }
+            }
+        }
+
     </script>
 </body>
