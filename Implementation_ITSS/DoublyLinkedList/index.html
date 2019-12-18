@@ -50,12 +50,23 @@
             this.head.pre = null
         }
 
+        LinkedList.prototype.deleteTail = function() {
+            let tail = this.head
+            while (tail.next != null) {
+                tail = tail.next
+            }
+            tail = tail.pre
+            tail.next = null
+            this.tail = tail
+        }
+        
         let list = new LinkedList
         list.addHead(new Node("A"))
         list.addHead(new Node("B"))
         list.addHead(new Node("C"))
         list.addTail(new Node("D"))
         list.deleteHead()
+        list.deleteTail()
         list.print()
         console.log(list)
 
