@@ -1,0 +1,90 @@
+<body>
+    <script>
+        const Node = function(data = {}) {
+            this.data = data
+            this.next = null
+        }
+        const LinkedList = function() {
+            this.head = null
+            this.tail = null
+        }
+
+        LinkedList.prototype.addHead = function(node) {
+            if (this.head == null) {
+                this.head = node
+                this.tail = node
+            }
+            else {
+                let tail = node
+                node.next = this.head
+                this.head = node
+                while (tail.next != null) {
+                    tail = tail.next
+                }
+            }        
+        }
+
+        LinkedList.prototype.print = function() {
+            let current = this.head
+            while (current != null) {
+                console.log(current)
+                current = current.next
+            }
+        }
+
+        LinkedList.prototype.enQueue = function(node) {
+            let tail = this.head
+            while (tail.next != null) {
+                tail = tail.next
+            }
+            tail.next = node
+            this.tail = node
+        }
+
+        LinkedList.prototype.deleteHead = function() {
+            if (this.head != null) {
+                this.head = this.head.next
+            }
+        }
+
+        LinkedList.prototype.deleteTail = function() {
+            if (this.head.next == null) {
+                this.head = null
+            }
+            let pre = this.head
+            let tail = this.head.next
+
+            while (tail.next != null) {
+                pre = tail
+                tail = tail.next
+            }
+            pre.next = null
+            this.tail = pre
+        }
+
+        LinkedList.prototype.deQueue = function() {
+            if (this.head == null) {
+                return
+            }
+            let x = this.head.data
+
+            list.deleteHead()
+            console.log(x)
+        }
+
+        LinkedList.prototype.peek = function() {
+            if (this.head != null) {
+                console.log(this.head)
+            }
+        }        
+
+        let list = new LinkedList()
+        list.addHead(new Node("A"))
+        list.addHead(new Node("B"))
+        list.addHead(new Node("C"))
+        list.enQueue(new Node("D"))
+        list.deQueue()
+        list.print()
+        console.log(list)
+    </script>
+</body>
